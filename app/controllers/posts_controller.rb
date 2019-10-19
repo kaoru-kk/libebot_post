@@ -12,7 +12,7 @@ class PostsController < ApplicationController
   end
 
   def callback
-    puts params[:events][:message][:text]
+    puts params[:events][:message]
     a = 111111111111111
     puts a
 
