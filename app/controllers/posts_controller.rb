@@ -20,7 +20,8 @@ class PostsController < ApplicationController
     end
 
     events = client.parse_events_from(body)
-
+    p body
+    p params[:message][:text]
     events.each { |event|
       case event
       when Line::Bot::Event::Message
