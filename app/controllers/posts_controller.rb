@@ -12,7 +12,9 @@ class PostsController < ApplicationController
   end
 
   def callback
-    p params[:events]
+    puts params[:events]
+    a = 111111111111111
+    puts a
 
     body = request.body.read
 
