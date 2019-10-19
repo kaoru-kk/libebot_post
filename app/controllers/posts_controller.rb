@@ -34,17 +34,6 @@ class PostsController < ApplicationController
         end
       end
     }
-    a = params
-    b = params[:events]
-    c = params[:events][:message]
-    d = params[:events][:message][:text]
-    e = params[:message][:text]
-    p a
-    p b
-    p c
-    p d
-    p e
-
     head :ok
   end
 
