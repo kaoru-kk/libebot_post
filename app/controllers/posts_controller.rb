@@ -16,7 +16,7 @@ class PostsController < ApplicationController
     post = Post.new
 
     post.name = params[:events][0][:message][:text]
-    post.user_id = current_user.id ||= 1
+    post.user_id = current_user ||= 1
     post.save
     body = request.body.read
 
