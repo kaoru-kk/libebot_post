@@ -43,7 +43,7 @@ class PostsController < ApplicationController
             text: 
             if dm == "UNKO"
               "unko!!!!!"
-            elsif db == "全部"
+            elsif dm == "全部"
               posts
             else
                dm
