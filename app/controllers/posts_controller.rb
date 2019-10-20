@@ -16,9 +16,6 @@ class PostsController < ApplicationController
     dm = params[:events][0][:message][:text]
     posts = Post.all
     post.name = dm
-    posts.each do |f|
-      a += f.name 
-    end
    
     if user_signed_in?
 	   post.user_id = current_user.id
