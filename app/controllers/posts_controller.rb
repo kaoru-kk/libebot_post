@@ -17,7 +17,7 @@ class PostsController < ApplicationController
 
     post.name = params[:events][0][:message][:text]
    
-    if user_signd_in?
+    if user_signed_in?
 	post.user_id = current_user.id
     else
 	post.user_id = 1
