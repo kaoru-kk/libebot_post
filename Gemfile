@@ -67,5 +67,6 @@ group :production do
 end
 gem 'line-bot-api'
 gem 'dotenv-rails'
-
+gem "devise"
 gem 'pry-byebug'
+gem "devise"
