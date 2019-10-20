@@ -43,10 +43,8 @@ class PostsController < ApplicationController
             text: 
             if dm == "UNKO"
               "unko!!!!!"
-            elsif dm == ""
-              "何か入力してください"
             else 
-               "not unko -_-"
+               dm
             end
           }
           client.reply_message(event['replyToken'], message)
