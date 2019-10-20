@@ -45,7 +45,7 @@ class PostsController < ApplicationController
               "unko!!!!!"
             elsif dm == "全部"
               posts.each do |f|
-                f.name + ""
+                f.name \n
               end
             else
                dm
