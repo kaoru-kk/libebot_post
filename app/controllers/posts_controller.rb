@@ -41,10 +41,11 @@ class PostsController < ApplicationController
         when Line::Bot::Event::MessageType::Text
           message = {
             type: 'text',
-            if dm.class == "String"
-              text: posts
+            text: 
+            if dm == "UNKO"
+              "unko!!!!!"
             else 
-              text: 1111
+               "not unko -_-"
             end
           }
           client.reply_message(event['replyToken'], message)
