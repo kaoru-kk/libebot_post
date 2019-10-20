@@ -24,6 +24,7 @@ class PostsController < ApplicationController
     end
 
     events = client.parse_events_from(body)
+    a = 1
 
     events.each { |event|
       case event
@@ -32,7 +33,10 @@ class PostsController < ApplicationController
         when Line::Bot::Event::MessageType::Text
           message = {
             type: 'text',
-            text: {event.message['text'],1}
+            text: [
+              event.message['text'],
+              a
+            ]
           }
           client.reply_message(event['replyToken'], message)
         end
