@@ -44,7 +44,7 @@ class PostsController < ApplicationController
             if dm == "UNKO"
               "unko!!!!!"
             elsif dm == "全部"
-              a
+              "どうやって全部の投稿を出力させよう、1つの変数に全てのタイトル入れられたら勝ちなのに"
             else
                dm
             end
