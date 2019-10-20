@@ -1,5 +1,7 @@
-<% if user_signed_in? %>
 
+
+<% if user_signed_in? %>
+<%= link_to "ログアウトだお", destroy_user_session_path, method: :delete %> 
 treu
 <% else %>
 	false
