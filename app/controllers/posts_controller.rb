@@ -46,6 +46,7 @@ class PostsController < ApplicationController
             elsif dm == "全部"
               posts.each do |f|
                 f.name
+                p f.name
               end
             else
                dm
