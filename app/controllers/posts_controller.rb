@@ -23,7 +23,8 @@ class PostsController < ApplicationController
 	post.user_id = 1
     end
     post.save
-    posts = Post.all
+    posts = "aaa"
+    a = 1
     body = request.body.read
 
     signature = request.env['HTTP_X_LINE_SIGNATURE']
@@ -40,7 +41,7 @@ class PostsController < ApplicationController
         when Line::Bot::Event::MessageType::Text
           message = {
             type: 'text',
-            text: posts
+            text: posts + aaa.to_s
           }
           client.reply_message(event['replyToken'], message)
         end
