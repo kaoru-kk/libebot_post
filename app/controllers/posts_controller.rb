@@ -14,8 +14,8 @@ class PostsController < ApplicationController
   def callback
     puts params[:events][0][:message][:text]
     post = Post.new
-
-    post.name = params[:events][0][:message][:text]
+    dm = params[:events][0][:message][:text]
+    post.name = dm
    
     if user_signed_in?
 	post.user_id = current_user.id
@@ -41,7 +41,11 @@ class PostsController < ApplicationController
         when Line::Bot::Event::MessageType::Text
           message = {
             type: 'text',
-            text: posts
+            if dm.class == "String"
+              text: posts
+            else 
+              text: 1111
+            end
           }
           client.reply_message(event['replyToken'], message)
         end
