@@ -44,7 +44,7 @@ class PostsController < ApplicationController
             text: 
             if dm == "UNKO"
               "unko!!!!!"
-            elsif db == nil
+            elsif dm == nil
               "何か入力してください"
             else 
                "not unko -_-"
