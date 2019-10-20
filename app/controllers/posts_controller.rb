@@ -17,7 +17,7 @@ class PostsController < ApplicationController
     posts = Post.all
     post.name = dm
     posts.each do |f|
-      a = f.name + "\n" 
+      a = f.name¥n 
     end
    
     if user_signed_in?
