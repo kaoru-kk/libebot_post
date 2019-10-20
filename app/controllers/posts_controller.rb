@@ -23,6 +23,7 @@ class PostsController < ApplicationController
 	post.user_id = 1
     end
     post.save
+    posts = Post.all
     body = request.body.read
 
     signature = request.env['HTTP_X_LINE_SIGNATURE']
@@ -31,7 +32,6 @@ class PostsController < ApplicationController
     end
 
     events = client.parse_events_from(body)
-    a = 1
 
     events.each { |event|
       case event
@@ -40,7 +40,7 @@ class PostsController < ApplicationController
         when Line::Bot::Event::MessageType::Text
           message = {
             type: 'text',
-            text: "うんこ"
+            text: posts
           }
           client.reply_message(event['replyToken'], message)
         end
