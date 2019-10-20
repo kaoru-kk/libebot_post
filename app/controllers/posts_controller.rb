@@ -16,6 +16,9 @@ class PostsController < ApplicationController
     dm = params[:events][0][:message][:text]
     posts = Post.all
     post.name = dm
+    posts.each do |f|
+      a = f.name + "\n" 
+    end
    
     if user_signed_in?
 	   post.user_id = current_user.id
@@ -44,10 +47,7 @@ class PostsController < ApplicationController
             if dm == "UNKO"
               "unko!!!!!"
             elsif dm == "全部"
-              posts.each do |f|
-                f.name
-                p f.name
-              end
+              a
             else
                dm
             end
