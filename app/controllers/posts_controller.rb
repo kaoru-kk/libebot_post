@@ -15,6 +15,7 @@ class PostsController < ApplicationController
     puts params[:events][0][:message][:text]
     post = Post.new
     dm = params[:events][0][:message][:text]
+    p dm
     post.name = dm
    
     if user_signed_in?
@@ -23,8 +24,6 @@ class PostsController < ApplicationController
 	post.user_id = 1
     end
     post.save
-    posts = "aaa"
-    a = 1
     body = request.body.read
 
     signature = request.env['HTTP_X_LINE_SIGNATURE']
@@ -44,7 +43,7 @@ class PostsController < ApplicationController
             text: 
             if dm == "UNKO"
               "unko!!!!!"
-            elsif dm == nil
+            elsif dm == ""
               "何か入力してください"
             else 
                "not unko -_-"
