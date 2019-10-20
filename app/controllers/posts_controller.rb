@@ -12,17 +12,17 @@ class PostsController < ApplicationController
   end
 
   def callback
-    puts params[:events][0][:message][:text]
     post = Post.new
     dm = params[:events][0][:message][:text]
-    p dm
+    posts = Post.all
     post.name = dm
    
     if user_signed_in?
-	post.user_id = current_user.id
+	   post.user_id = current_user.id
     else
-	post.user_id = 1
+	   post.user_id = 1
     end
+
     post.save
     body = request.body.read
 
@@ -43,7 +43,9 @@ class PostsController < ApplicationController
             text: 
             if dm == "UNKO"
               "unko!!!!!"
-            else 
+            elsif db == "全部"
+              posts
+            else
                dm
             end
           }
