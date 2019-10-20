@@ -22,7 +22,6 @@ class PostsController < ApplicationController
     else
 	post.user_id = 1
     end
-    post.user_id = current_user ||= 1
     post.save
     body = request.body.read
 
