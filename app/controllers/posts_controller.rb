@@ -33,12 +33,9 @@ class PostsController < ApplicationController
         when Line::Bot::Event::MessageType::Text
           message = {
             type: 'text',
-            text: [
-              event.message['text'],
-              a
-            ]
+            text: event.message['text']
           }
-          client.reply_message(event['replyToken'], message)
+          client.reply_message(event['replyToken'], message, a)
         end
       end
     }
