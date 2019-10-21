@@ -30,7 +30,7 @@ class PostsController < ApplicationController
 
     all_post = ""
     array.each_with_index do |f,c|
-      all_post += "・" + array[c] + ","
+      all_post += "・" + array[c] + " \n"
     end   
     body = request.body.read
 
@@ -48,14 +48,7 @@ class PostsController < ApplicationController
         when Line::Bot::Event::MessageType::Text
           message = {
             type: 'text',
-            text: 
-            if dm == "UNKO"
-              "unko!!!!!"
-            elsif dm == "全部"
-              all_post
-            else
-               dm
-            end
+            text: all_post
           }
           client.reply_message(event['replyToken'], message)
         end
