@@ -16,6 +16,16 @@ class PostsController < ApplicationController
     dm = params[:events][0][:message][:text]
     posts = Post.all
     post.name = dm
+
+    array = Array.new(posts.count)
+    posts.each_with_index do |f,c|
+      array[c] = f.title
+    end
+
+    all = ""
+    array.each_with_index do |f,c|
+      all += "・" + array[c] + ","
+    end
    
     if user_signed_in?
 	   post.user_id = current_user.id
@@ -44,7 +54,7 @@ class PostsController < ApplicationController
             if dm == "UNKO"
               "unko!!!!!"
             elsif dm == "全部"
-              "どうやって全部の投稿を出力させよう、1つの変数に全てのタイトル入れられたら勝ちなのに"
+              all
             else
                dm
             end
