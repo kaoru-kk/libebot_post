@@ -16,10 +16,6 @@ class PostsController < ApplicationController
     dm = params[:events][0][:message][:text]
     post.name = dm
     post.user_id = params[:events][0][:source][:userId]
-
-    p params[:events][0][:source][:type]
-    p params[:events][0][:source][:userId]
-    p params[:events][0][:source][:user_id]
     unless dm == "うんこ"
       post.save
     end
