@@ -15,7 +15,8 @@ class PostsController < ApplicationController
     post = Post.new
     dm = params[:events][0][:message][:text]
     post.name = dm
-    post.user_id = params[:events][0][:source][:user_id] 
+    post.user_id = params[:events][0][:source][:user_id]
+    p post.user_id 
     unless dm == "うんこ"
       post.save
     end
