@@ -17,13 +17,13 @@ class PostsController < ApplicationController
     posts = Post.all
     post.name = dm   
     if user_signed_in?
-	   post.user_id = current_user.id
+      post.user_id = current_user.id
     else
-	   post.user_id = 1
+      post.user_id = 1
     end
     post.save
 
-all = 1
+    all = 1
     body = request.body.read
 
     signature = request.env['HTTP_X_LINE_SIGNATURE']
