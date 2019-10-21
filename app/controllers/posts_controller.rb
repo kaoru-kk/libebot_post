@@ -28,9 +28,9 @@ class PostsController < ApplicationController
       array[c] = f.name
     end
 
-    all = ""
+    all_post = ""
     array.each_with_index do |f,c|
-      all += "・" + array[c] + ","
+      all_post += "・" + array[c] + ","
     end
 
     body = request.body.read
@@ -53,7 +53,7 @@ class PostsController < ApplicationController
             if dm == "UNKO"
               "unko!!!!!"
             elsif dm == "全部"
-              all
+              all_post
             else
                dm
             end
