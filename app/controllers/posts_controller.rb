@@ -23,15 +23,6 @@ class PostsController < ApplicationController
     end
     post.save
 
-    # array = Array.new(posts.count)
-    # posts.each_with_index do |f,c|
-    #   array[c] = f.name
-    # end
-
-    # all_post = ""
-    # array.each_with_index do |f,c|
-    #   all_post += "・" + array[c] + ","
-    # end
 all = 1
     body = request.body.read
 
