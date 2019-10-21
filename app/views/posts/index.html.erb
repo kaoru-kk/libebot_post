@@ -1,12 +1,5 @@
 
 
-<% if user_signed_in? %>
-<%= link_to "ログアウトだお", destroy_user_session_path, method: :delete %> 
-treu
-<% else %>
-	false
-<% end %>
-
 <p id="notice"><%= notice %></p>
 
 <h1>Posts</h1>
@@ -22,7 +15,7 @@ treu
   <tbody>
     <% @posts.each do |post| %>
       <tr>
-        <td><%= post.user_id %>&<%= post.user.email %> <%= post.name %></td>
+        <td><%= post.user_id %>& <%= post.name %></td>
         <td><%= link_to 'Show', post %></td>
         <td><%= link_to 'Edit', edit_post_path(post) %></td>
         <td><%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %></td>
