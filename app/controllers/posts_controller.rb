@@ -23,7 +23,15 @@ class PostsController < ApplicationController
     end
     post.save
 
-    all = 1
+    array = Array.new(posts.count)
+    posts.each_with_index do |f,c|
+      array[c] = f.name
+    end
+
+    all_post = ""
+    array.each_with_index do |f,c|
+      all_post += "・" + array[c] + ","
+    end   
     body = request.body.read
 
     signature = request.env['HTTP_X_LINE_SIGNATURE']
