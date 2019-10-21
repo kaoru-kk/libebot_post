@@ -14,15 +14,11 @@ class PostsController < ApplicationController
   def callback
     post = Post.new
     dm = params[:events][0][:message][:text]
-    posts = Post.all
-    post.name = dm   
-    if user_signed_in?
-      post.user_id = current_user.id
-    else
-      post.user_id = 1
-    end
+    post.name = dm
+    post.user_id = params[:events][0][:source][:user_id] 
     post.save
 
+    posts = Post.where(user_id: params[:events][0][:source][:user_id])
     array = Array.new(posts.count)
     posts.each_with_index do |f,c|
       array[c] = f.name
@@ -31,7 +27,7 @@ class PostsController < ApplicationController
     all_post = ""
     array.each_with_index do |f,c|
       all_post += "・" + array[c] + " \n"
-    end   
+    end
     body = request.body.read
 
     signature = request.env['HTTP_X_LINE_SIGNATURE']
