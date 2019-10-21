@@ -18,6 +18,7 @@ class PostsController < ApplicationController
     post.user_id = params[:events][0][:source][:userId]
     p params[:events][0][:source]
     p params[:events][0][:source][0]
+    p params[:events][0][:source][:type]
     p params[:events][0][:source][:user_id]
     p post.user_id 
     unless dm == "うんこ"
