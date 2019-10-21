@@ -15,7 +15,13 @@ class PostsController < ApplicationController
     post = Post.new
     dm = params[:events][0][:message][:text]
     posts = Post.all
-    post.name = dm
+    post.name = dm   
+    if user_signed_in?
+	   post.user_id = current_user.id
+    else
+	   post.user_id = 1
+    end
+    post.save
 
     array = Array.new(posts.count)
     posts.each_with_index do |f,c|
@@ -26,14 +32,7 @@ class PostsController < ApplicationController
     array.each_with_index do |f,c|
       all += "・" + array[c] + ","
     end
-   
-    if user_signed_in?
-	   post.user_id = current_user.id
-    else
-	   post.user_id = 1
-    end
-
-    post.save
+  
     body = request.body.read
 
     signature = request.env['HTTP_X_LINE_SIGNATURE']
