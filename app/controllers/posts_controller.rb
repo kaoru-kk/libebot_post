@@ -15,12 +15,12 @@ class PostsController < ApplicationController
     post = Post.new
     dm = params[:events][0][:message][:text]
     post.name = dm
-    post.user_id = params[:events][0][:source][:user_id]
+    post.user_id = params[:events][0][:source][:userId]
     p post.user_id 
     unless dm == "うんこ"
       post.save
     end
-    posts = Post.where(user_id: params[:events][0][:source][:user_id])
+    posts = Post.where(user_id: params[:events][0][:source][:userId])
     array = Array.new(posts.count)
     posts.each_with_index do |f,c|
       array[c] = f.name
