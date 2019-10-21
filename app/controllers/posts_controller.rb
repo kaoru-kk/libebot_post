@@ -27,7 +27,7 @@ class PostsController < ApplicationController
 
     all_post = ""
     array.each_with_index do |f,c|
-      all_post += (c.to_i +1).to_s +"."+ array[c] + " \n"
+      all_post += (c + 1).to_s +"."+ array[c].to_s + " \n"
     end
     body = request.body.read
 
