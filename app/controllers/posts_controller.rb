@@ -17,7 +17,7 @@ class PostsController < ApplicationController
     post.name = dm
     post.user_id = params[:events][0][:source][:userId]
     p params[:events][0][:source][:userId]
-    unless dm == "嫌い" || dm == "好き!"
+    unless dm == "まぜそば" ||dm == "嫌い" || dm == "好き!"
       post.save
     end
     posts = Post.where(user_id: params[:events][0][:source][:userId])
@@ -38,6 +38,8 @@ class PostsController < ApplicationController
     end
 
     events = client.parse_events_from(body)
+    unlike = {type:"text", text:"まぜそば食え！！！！"}
+    like = {type:"text", text: "僕はそんなあなたが大好きです"}
 
     events.each { |event|
       case event
@@ -49,9 +51,9 @@ class PostsController < ApplicationController
             text: all_post
         }
           if dm == "嫌い"
-            client.reply_message(event['replyToken'], "まぜそば食え！！！！")
+            client.reply_message(event['replyToken'], unlike)
           elsif dm == "好き!"
-            client.reply_message(event['replyToken'], "僕はそんなあなたが大好きです")
+            client.reply_message(event['replyToken'], like)
           elsif dm == "まぜそば"
             client.reply_message(event['replyToken'], template)
           else
