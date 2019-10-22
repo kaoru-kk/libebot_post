@@ -47,19 +47,11 @@ class PostsController < ApplicationController
           message = {
             type: 'text',
             text: all_post
-        },
-          unlike = {
-            type: "text",
-            text: "まぜそば食え！！！！"
-          },
-          like = {
-            type: "text",
-            text: "僕はそんなあなたが大好きです"
-          }
+        }
           if dm == "嫌い"
-            client.reply_message(event['replyToken'], unlike)
+            client.reply_message(event['replyToken'], "まぜそば食え！！！！")
           elsif dm == "好き!"
-            client.reply_message(event['replyToken'], like)
+            client.reply_message(event['replyToken'], "僕はそんなあなたが大好きです")
           elsif dm == "まぜそば"
             client.reply_message(event['replyToken'], template)
           else
