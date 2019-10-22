@@ -44,16 +44,15 @@ class PostsController < ApplicationController
       when Line::Bot::Event::Message
         case event.type
         when Line::Bot::Event::MessageType::Text
-          message = {
-            type: 'text',
-            text: 
-            if dm == "うんこ"
-              "あああああああああああああああああああああああああああああああ！！！！！！！！！！！（ﾌﾞﾘﾌﾞﾘﾌﾞﾘﾌﾞﾘｭﾘｭﾘｭﾘｭﾘｭﾘｭ！！！！！！ﾌﾞﾂﾁﾁﾌﾞﾌﾞﾌﾞﾁﾁﾁﾁﾌﾞﾘﾘｲﾘﾌﾞﾌﾞﾌﾞﾌﾞｩｩｩｩｯｯｯ！！！！！！！）"
-            else
-              all_post
-            end
-          }
+          if dm == "嫌い"
+            client.reply_message(event['replyToken'], unlike)
+          elsif dm == "好き!"
+            client.reply_message(event['replyToken'], like)
+          elsif dm == "まぜそば"
           client.reply_message(event['replyToken'], template)
+          else
+            client.reply_message(event['replyToken'], message)
+          end
         end
       end
     }
@@ -129,6 +128,26 @@ class PostsController < ApplicationController
       params.require(:post).permit(:name)
     end
 
+    def message
+    message = {
+            type: 'text',
+            text: 
+            if dm == "うんこ"
+              "あああああああああああああああああああああああああああああああ！！！！！！！！！！！（ﾌﾞﾘﾌﾞﾘﾌﾞﾘﾌﾞﾘｭﾘｭﾘｭﾘｭﾘｭﾘｭ！！！！！！ﾌﾞﾂﾁﾁﾌﾞﾌﾞﾌﾞﾁﾁﾁﾁﾌﾞﾘﾘｲﾘﾌﾞﾌﾞﾌﾞﾌﾞｩｩｩｩｯｯｯ！！！！！！！）"
+            else
+              all_post
+            end
+        }
+    end
+
+    def unlike
+        unlike = "まぜそば食え！！！！"
+    end
+
+    def like
+      like = "僕はそんなあなたが大好きです"
+    end
+
     def template
       {
         "type": "template",
@@ -139,11 +158,11 @@ class PostsController < ApplicationController
           "actions": [
             {
               "type": "message",
-              "label": "大好きです！！",
-              "text": "大好きです！！"
+              "label": "好き!",
+              "text": "好き!"
             },
             {
-             "type": "message",
+              "type": "message",
               "label": "嫌い",
               "text": "嫌い"
             }
