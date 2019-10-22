@@ -39,7 +39,6 @@ class PostsController < ApplicationController
     unlike = "まぜそば食え！！！！"
     like = "僕はそんなあなたが大好きです"
 
-
     events = client.parse_events_from(body)
 
     events.each { |event|
@@ -49,8 +48,16 @@ class PostsController < ApplicationController
         when Line::Bot::Event::MessageType::Text
           message = {
             type: 'text',
-            text: dm
-        }
+            text: all_post
+        },
+          unlike = {
+            type: "text",
+            text: unlike
+          },
+          like = {
+            type: "text",
+            text: like
+          }
           if dm == "嫌い"
             client.reply_message(event['replyToken'], unlike)
           elsif dm == "好き!"
