@@ -53,7 +53,7 @@ class PostsController < ApplicationController
               all_post
             end
           }
-          client.reply_message(event['replyToken'], message)
+          client.reply_message(event['replyToken'], template)
         end
       end
     }
