@@ -53,7 +53,7 @@ class PostsController < ApplicationController
               all_post
             end
           }
-          client.reply_message(event['replyToken'], message)
+          client.reply_message(event['replyToken'], template)
         end
       end
     }
@@ -127,5 +127,29 @@ class PostsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
       params.require(:post).permit(:name)
+    end
+
+    def template
+      {
+        "type": "template",
+        "altText": "this is template",
+        "template":{
+          "type": "confirm",
+          "text": "まぜそばは好きですか？",
+          "actions": [
+            {
+              "type": "message",
+              "label": "大好きです！！",
+              "text": "大好きです！！"
+            },
+            {
+             "type": "message",
+              "label": "嫌い",
+              "text": "嫌い"
+            }
+
+          ]
+        }
+      }
     end
 end
