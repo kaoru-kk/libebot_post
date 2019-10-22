@@ -36,6 +36,9 @@ class PostsController < ApplicationController
     unless client.validate_signature(body, signature)
       head :bad_request
     end
+    unlike = "まぜそば食え！！！！"
+    like = "僕はそんなあなたが大好きです"
+
 
     events = client.parse_events_from(body)
 
@@ -44,12 +47,16 @@ class PostsController < ApplicationController
       when Line::Bot::Event::Message
         case event.type
         when Line::Bot::Event::MessageType::Text
+          message = {
+            type: 'text',
+            text: dm
+        }
           if dm == "嫌い"
             client.reply_message(event['replyToken'], unlike)
           elsif dm == "好き!"
             client.reply_message(event['replyToken'], like)
           elsif dm == "まぜそば"
-          client.reply_message(event['replyToken'], template)
+            client.reply_message(event['replyToken'], template)
           else
             client.reply_message(event['replyToken'], message)
           end
@@ -129,23 +136,7 @@ class PostsController < ApplicationController
     end
 
     def message
-    message = {
-            type: 'text',
-            text: 
-            if dm == "うんこ"
-              "あああああああああああああああああああああああああああああああ！！！！！！！！！！！（ﾌﾞﾘﾌﾞﾘﾌﾞﾘﾌﾞﾘｭﾘｭﾘｭﾘｭﾘｭﾘｭ！！！！！！ﾌﾞﾂﾁﾁﾌﾞﾌﾞﾌﾞﾁﾁﾁﾁﾌﾞﾘﾘｲﾘﾌﾞﾌﾞﾌﾞﾌﾞｩｩｩｩｯｯｯ！！！！！！！）"
-            else
-              all_post
-            end
-        }
-    end
 
-    def unlike
-        unlike = "まぜそば食え！！！！"
-    end
-
-    def like
-      like = "僕はそんなあなたが大好きです"
     end
 
     def template
