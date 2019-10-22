@@ -17,7 +17,7 @@ class PostsController < ApplicationController
     post.name = dm
     post.user_id = params[:events][0][:source][:userId]
     p params[:events][0][:source][:userId]
-    unless dm == "うんこ"
+    unless dm == params[:events][0][:message][:text] || dm == "うんこ"
       post.save
     end
     posts = Post.where(user_id: params[:events][0][:source][:userId])
@@ -49,7 +49,9 @@ class PostsController < ApplicationController
             text: 
             if dm == "うんこ"
               "あああああああああああああああああああああああああああああああ！！！！！！！！！！！（ﾌﾞﾘﾌﾞﾘﾌﾞﾘﾌﾞﾘｭﾘｭﾘｭﾘｭﾘｭﾘｭ！！！！！！ﾌﾞﾂﾁﾁﾌﾞﾌﾞﾌﾞﾁﾁﾁﾁﾌﾞﾘﾘｲﾘﾌﾞﾌﾞﾌﾞﾌﾞｩｩｩｩｯｯｯ！！！！！！！）"
-            else 
+            elsif dm != params[:events][0][:message][:text]
+              "文字を入力してね"
+            else
               all_post
             end
           }
