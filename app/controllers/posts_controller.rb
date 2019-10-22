@@ -17,7 +17,7 @@ class PostsController < ApplicationController
     post.name = dm
     post.user_id = params[:events][0][:source][:userId]
     p params[:events][0][:source][:userId]
-    unless dm == "うんこ"
+    unless dm == "嫌い" || dm == "好き!"
       post.save
     end
     posts = Post.where(user_id: params[:events][0][:source][:userId])
@@ -36,8 +36,6 @@ class PostsController < ApplicationController
     unless client.validate_signature(body, signature)
       head :bad_request
     end
-    unlike = "まぜそば食え！！！！"
-    like = "僕はそんなあなたが大好きです"
 
     events = client.parse_events_from(body)
 
@@ -52,11 +50,11 @@ class PostsController < ApplicationController
         },
           unlike = {
             type: "text",
-            text: unlike
+            text: "まぜそば食え！！！！"
           },
           like = {
             type: "text",
-            text: like
+            text: "僕はそんなあなたが大好きです"
           }
           if dm == "嫌い"
             client.reply_message(event['replyToken'], unlike)
