@@ -167,10 +167,10 @@ class PostsController < ApplicationController
       {
         "type" "template",
         "altText": "カメラを起動します",
-        "template":
-        {
+        "template":{
           "type": "camera",
           "label": "Camera"
         }
       }
+    end
 end
