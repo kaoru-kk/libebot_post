@@ -38,8 +38,8 @@ class PostsController < ApplicationController
     end
 
     events = client.parse_events_from(body)
-    unlike = {type:"text", text:"まぜそば食え！！！！"}
-    like = {type:"text", text: "僕はそんなあなたが大好きです"}
+    unlike = {type:"text", text:"食え！！！！"}
+    like = {type:"text", text: "大好きです"}
 
     events.each { |event|
       case event
