@@ -165,12 +165,8 @@ class PostsController < ApplicationController
     end
     def camera
       {
-        "type": "template",
-        "altText": "カメラを起動します",
-        "template":{
           "type": "camera",
           "label": "Camera"
-        }
       }
     end
 end
