@@ -165,8 +165,11 @@ class PostsController < ApplicationController
     end
     def camera
       {
+        "type": "template",
+        "template":{
           "type": "camera",
           "label": "Camera"
+        }
       }
     end
 end
