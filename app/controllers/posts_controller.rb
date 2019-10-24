@@ -39,24 +39,6 @@ class PostsController < ApplicationController
 
     events = client.parse_events_from(body)
     like = {type:"text", text: "大好きです"}
-    # hello =       {
-    #     "type": "bubble",
-    #     "body":{
-    #       "type": "box",
-    #       "layout": "horizontal",
-    #       "contents":[
-    #         {
-    #           "type": "text",
-    #           "text": "Hello,"
-    #         },
-    #         {
-    #           "type": "text",
-    #           "text": "world!"
-    #         }
-    #       ]
-    #     }
-    #   }
-
 
     events.each { |event|
       case event
@@ -168,16 +150,15 @@ class PostsController < ApplicationController
           },
           "actions": [
             {
-              "type": "message",
-              "label": "好き!",
-              "text": "好き!"
+              "type": "uri",
+              "label": "卒論",
+              "uri": "http://54.64.39.151/"
             },
             {
               "type": "message",
               "label": "カメラを起動する",
               "text": "カメラを起動する"
             }
-
           ]
         }
       }
@@ -204,11 +185,6 @@ class PostsController < ApplicationController
                 "type": "camera",
                 "label": "Camera"
               }
-            },
-            {
-              "type": "uri",
-              "label": "卒論",
-              "uri": "http://54.64.39.151/"
             }
           ]
         }
