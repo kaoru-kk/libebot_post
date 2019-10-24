@@ -155,7 +155,7 @@ class PostsController < ApplicationController
             },
             {
               "type": "message",
-              "label": "アルバム"
+              "label": "アルバム",
               "text": "アルバムを開く"
             }
           ]
