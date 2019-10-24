@@ -17,7 +17,7 @@ class PostsController < ApplicationController
     post.name = dm
     post.user_id = params[:events][0][:source][:userId]
     p params[:events][0][:source][:userId]
-    unless dm == "まぜそば" ||dm == "嫌い" || dm == "好き!"
+    unless dm == "まぜそば" || dm == "カメラを起動する" || dm == "嫌い" || dm == "好き!"
       post.save
     end
     posts = Post.where(user_id: params[:events][0][:source][:userId])
@@ -38,7 +38,6 @@ class PostsController < ApplicationController
     end
 
     events = client.parse_events_from(body)
-    unlike = {type:"text", text:"食え!！！！！"}
     like = {type:"text", text: "大好きです"}
     # hello =       {
     #     "type": "bubble",
@@ -57,21 +56,7 @@ class PostsController < ApplicationController
     #       ]
     #     }
     #   }
-    camera =  {
-        "type": "text",
-        "text": "カメラを起動しますか?",
-        "quickReply": {
-          "items": [
-            {
-              "type": "action",
-              "action": {
-                "type": "camera",
-                "label": "Camera"
-              }
-            }
-          ]
-        }
-      }
+
 
     events.each { |event|
       case event
@@ -82,15 +67,13 @@ class PostsController < ApplicationController
             type: 'text',
             text: all_post
         }
-          if dm == "嫌い"
-            client.reply_message(event['replyToken'], unlike)
+          if dm == "カメラを起動する"
+            client.reply_message(event['replyToken'], camera)
           elsif dm == "好き!"
             client.reply_message(event['replyToken'], like)
           elsif dm == "まぜそば"
             client.reply_message(event['replyToken'], template)
-          elsif dm == "カメラ"
-            client.reply_message(event['replyToken'], camera)
-          else 
+          else
             client.reply_message(event['replyToken'], message)
           end
         end
@@ -187,8 +170,8 @@ class PostsController < ApplicationController
             },
             {
               "type": "message",
-              "label": "嫌い",
-              "text": "嫌い"
+              "label": "カメラを起動する",
+              "text": "カメラを起動する"
             }
 
           ]
@@ -201,6 +184,24 @@ class PostsController < ApplicationController
         "template":{
           "type": "camera",
           "label": "Camera"
+        }
+      }
+    end
+
+    def camera
+      camera =  {
+        "type": "text",
+        "text": "カメラを起動しますか?",
+        "quickReply": {
+          "items": [
+            {
+              "type": "action",
+              "action": {
+                "type": "camera",
+                "label": "Camera"
+              }
+            }
+          ]
         }
       }
     end
