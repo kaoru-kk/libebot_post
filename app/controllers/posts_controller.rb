@@ -204,6 +204,11 @@ class PostsController < ApplicationController
                 "type": "camera",
                 "label": "Camera"
               }
+            },
+            {
+              "type": "uri",
+              "label": "卒論",
+              "uri": "http://54.64.39.151/"
             }
           ]
         }
@@ -236,24 +241,5 @@ class PostsController < ApplicationController
     #     }
     #   }
 
-    # end
-    # def hello
-    #   {
-    #     "type": "bubble",
-    #     "body":{
-    #       "type": "box",
-    #       "layout": "horizontal",
-    #       "contents":[
-    #         {
-    #           "type": "text",
-    #           "text": "Hello,"
-    #         },
-    #         {
-    #           "type": "text",
-    #           "text": "world!"
-    #         }
-    #       ]
-    #     }
-    #   }
-    # end
+
 end
