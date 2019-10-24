@@ -158,7 +158,6 @@ class PostsController < ApplicationController
             }
           ]
         }
-      }
     end
 
     def camera
