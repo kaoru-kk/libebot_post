@@ -16,14 +16,8 @@ class PostsController < ApplicationController
     dm = params[:events][0][:message][:text]
     post.name = dm
     post.user_id = params[:events][0][:source][:userId]
-    if dm == nil
-      p "sss"
-    elsif dm == ""
-      p "aaaaa"
-    elsif dm == 0
-      p "fffffff"
-    end
-    unless dm == "まぜそば" || dm == "カメラを起動する" || dm == "嫌い" || dm == "好き!"
+
+    unless dm == nil || dm == "まぜそば" || dm == "カメラを起動する" || dm == "嫌い" || dm == "好き!"
       post.save
     end
     posts = Post.where(user_id: params[:events][0][:source][:userId])
