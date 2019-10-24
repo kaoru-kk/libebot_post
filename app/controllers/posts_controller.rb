@@ -40,23 +40,23 @@ class PostsController < ApplicationController
     events = client.parse_events_from(body)
     unlike = {type:"text", text:"食え!！！！！"}
     like = {type:"text", text: "大好きです"}
-    hello =       {
-        "type": "bubble",
-        "body":{
-          "type": "box",
-          "layout": "horizontal",
-          "contents":[
-            {
-              "type": "text",
-              "text": "Hello,"
-            },
-            {
-              "type": "text",
-              "text": "world!"
-            }
-          ]
-        }
-      }
+    # hello =       {
+    #     "type": "bubble",
+    #     "body":{
+    #       "type": "box",
+    #       "layout": "horizontal",
+    #       "contents":[
+    #         {
+    #           "type": "text",
+    #           "text": "Hello,"
+    #         },
+    #         {
+    #           "type": "text",
+    #           "text": "world!"
+    #         }
+    #       ]
+    #     }
+    #   }
 
     events.each { |event|
       case event
@@ -73,8 +73,8 @@ class PostsController < ApplicationController
             client.reply_message(event['replyToken'], like)
           elsif dm == "まぜそば"
             client.reply_message(event['replyToken'], template)
-          elsif dm == "ハロー"
-            client.reply_message(event['replyToken'], hello)
+          elsif dm == "カメラ"
+            client.reply_message(event['replyToken'], camera)
           else 
             client.reply_message(event['replyToken'], message)
           end
@@ -190,23 +190,50 @@ class PostsController < ApplicationController
       }
     end
 
-    def hello
+    def camera
       {
-        "type": "bubble",
-        "body":{
-          "type": "box",
-          "layout": "horizontal",
-          "contents":[
+        "type": "text",
+        "text": "カメラを起動しますか?",
+        "quickReply": {
+          "items": [
             {
-              "type": "text",
-              "text": "Hello,"
+              "type": "action",
+              "imageUrl": "http://54.64.39.151/",
+              "action": {
+                "type": "message",
+                "label": "卒論",
+                "text": "卒論"
+              }
             },
             {
-              "type": "text",
-              "text": "world!"
+              "type": "action",
+              "action": {
+                "type": "camera"
+                "label" "Camera"
+              }
             }
           ]
         }
       }
+
     end
+    # def hello
+    #   {
+    #     "type": "bubble",
+    #     "body":{
+    #       "type": "box",
+    #       "layout": "horizontal",
+    #       "contents":[
+    #         {
+    #           "type": "text",
+    #           "text": "Hello,"
+    #         },
+    #         {
+    #           "type": "text",
+    #           "text": "world!"
+    #         }
+    #       ]
+    #     }
+    #   }
+    # end
 end
