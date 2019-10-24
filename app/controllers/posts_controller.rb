@@ -143,10 +143,6 @@ class PostsController < ApplicationController
           },
           "actions": [
             {
-              "type": "cameraRoll",
-              "label": "カメラロール"
-            },
-            {
               "type": "message",
               "label": "カメラを起動する",
               "text": "カメラを起動する"
