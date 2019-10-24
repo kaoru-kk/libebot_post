@@ -74,7 +74,7 @@ class PostsController < ApplicationController
             {
               "type": "action",
               "action": {
-                "type": "camera"
+                "type": "camera",
                 "label": "Camera"
               }
             }
