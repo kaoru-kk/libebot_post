@@ -51,8 +51,6 @@ class PostsController < ApplicationController
         }
           if dm == "カメラを起動する"
             client.reply_message(event['replyToken'], camera)
-          elsif dm == "アルバムを開く"
-            client.reply_message(event['replyToken'], cameraRoll)
           elsif dm == "好き!"
             client.reply_message(event['replyToken'], like)
           elsif dm == "まぜそば"
@@ -174,19 +172,7 @@ class PostsController < ApplicationController
               "action": {
                 "type": "camera",
                 "label": "カメラ起動"
-              }
-            }
-          ]
-        }
-      }
-    end
-
-    def cameraRoll
-      camera =  {
-        "type": "text",
-        "text": "アルバムを開きます",
-        "quickReply": {
-          "items": [
+              },
             {
               "type": "action",
               "action": {
