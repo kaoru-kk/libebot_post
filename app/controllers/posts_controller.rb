@@ -57,20 +57,11 @@ class PostsController < ApplicationController
     #       ]
     #     }
     #   }
-    camera =       {
+    camera =  {
         "type": "text",
         "text": "カメラを起動しますか?",
         "quickReply": {
           "items": [
-            {
-              "type": "action",
-              "imageUrl": "http://54.64.39.151/",
-              "action": {
-                "type": "message",
-                "label": "卒論",
-                "text": "卒論"
-              }
-            },
             {
               "type": "action",
               "action": {
