@@ -56,8 +56,8 @@ class PostsController < ApplicationController
             client.reply_message(event['replyToken'], like)
           elsif dm == "まぜそば"
             client.reply_message(event['replyToken'], template)
-          elsif dm == "カメラ"
-            client.reply_message(event['replyToken'], camera)
+          elsif dm == "ハロー"
+            client.reply_message(event['replyToken'], hello)
           else 
             client.reply_message(event['replyToken'], message)
           end
@@ -169,6 +169,26 @@ class PostsController < ApplicationController
         "template":{
           "type": "camera",
           "label": "Camera"
+        }
+      }
+    end
+
+    def hello
+      {
+        "type": "bubble",
+        "body":{
+          "type": "box",
+          "layout": "horizontal",
+          "contents":[
+            {
+              "type": "text",
+              "text": "Hello,"
+            },
+            {
+              "type": "text",
+              "text": "world!"
+            }
+          ]
         }
       }
     end
