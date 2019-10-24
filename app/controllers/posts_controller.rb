@@ -133,10 +133,6 @@ class PostsController < ApplicationController
       params.require(:post).permit(:name)
     end
 
-    def message
-
-    end
-
     def template
       {
         "type": "template",
@@ -144,31 +140,23 @@ class PostsController < ApplicationController
         "template":{
           "type": "confirm",
           "text": "まぜそばは好きですか？",
-          "size": {
-            "width": "2500",
-            "height": "1700"
           },
           "actions": [
             {
-              "type": "uri",
-              "label": "卒論",
-              "uri": "http://54.64.39.151/"
+              "type": "cameraRoll",
+              "label": "カメラロール"
             },
             {
               "type": "message",
               "label": "カメラを起動する",
               "text": "カメラを起動する"
+            },
+            {
+              "type": "uri",
+              "label": "卒論",
+              "uri": "http://54.64.39.151/"
             }
           ]
-        }
-      }
-    end
-    def camera
-      {
-        "type": "template",
-        "template":{
-          "type": "camera",
-          "label": "Camera"
         }
       }
     end
@@ -190,32 +178,4 @@ class PostsController < ApplicationController
         }
       }
     end
-
-    # def camera
-    #   {
-    #     "type": "text",
-    #     "text": "カメラを起動しますか?",
-    #     "quickReply": {
-    #       "items": [
-    #         {
-    #           "type": "action",
-    #           "imageUrl": "http://54.64.39.151/",
-    #           "action": {
-    #             "type": "message",
-    #             "label": "卒論",
-    #             "text": "卒論"
-    #           }
-    #         },
-    #         {
-    #           "type": "action",
-    #           "action": {
-    #             "type": "camera"
-    #             "label": "Camera"
-    #           }
-    #         }
-    #       ]
-    #     }
-    #   }
-
-
 end
