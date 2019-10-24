@@ -39,6 +39,7 @@ class PostsController < ApplicationController
 
     events = client.parse_events_from(body)
     like = {type:"text", text: "大好きです"}
+    denji = {type: "uri", text: "https://www.youtube.com/watch?v=sJte2xhZeVY"}
 
     events.each { |event|
       case event
@@ -57,6 +58,8 @@ class PostsController < ApplicationController
             client.reply_message(event['replyToken'], like)
           elsif dm == "まぜそば"
             client.reply_message(event['replyToken'], template)
+          elsif dm == "チェンソーマン"
+            client.reply_message(event['replyToken'], denji)            
           else
             client.reply_message(event['replyToken'], message)
           end
