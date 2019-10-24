@@ -140,7 +140,6 @@ class PostsController < ApplicationController
         "template":{
           "type": "confirm",
           "text": "まぜそばは好きですか？",
-          },
           "actions": [
             {
               "type": "uri",
@@ -154,6 +153,7 @@ class PostsController < ApplicationController
             }
           ]
         }
+      }
     end
 
     def camera
