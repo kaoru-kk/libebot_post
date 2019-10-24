@@ -146,11 +146,11 @@ class PostsController < ApplicationController
               "label": "カメラON",
               "text": "カメラを起動する"
             },
-            {
-              "type": "uri",
-              "label": "卒論",
-              "uri": "http://54.64.39.151/"
-            },
+            # {
+            #   "type": "uri",
+            #   "label": "卒論",
+            #   "uri": "http://54.64.39.151/"
+            # },
             {
               "type": "message",
               "label": "アルバム",
