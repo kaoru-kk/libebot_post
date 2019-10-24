@@ -209,7 +209,7 @@ class PostsController < ApplicationController
               "type": "action",
               "action": {
                 "type": "camera"
-                "label" "Camera"
+                "label": "Camera"
               }
             }
           ]
