@@ -142,14 +142,18 @@ class PostsController < ApplicationController
           "text": "まぜそばは好きですか？",
           "actions": [
             {
+              "type": "message",
+              "label": "カメラON",
+              "text": "カメラを起動する"
+            },
+            {
               "type": "uri",
               "label": "卒論",
               "uri": "http://54.64.39.151/"
             },
             {
-              "type": "message",
-              "label": "カメラを起動する",
-              "text": "カメラを起動する"
+              "type": "cameraRoll",
+              "label": "アルバム"
             }
           ]
         }
