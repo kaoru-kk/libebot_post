@@ -40,6 +40,23 @@ class PostsController < ApplicationController
     events = client.parse_events_from(body)
     unlike = {type:"text", text:"食え!！！！！"}
     like = {type:"text", text: "大好きです"}
+    hello =       {
+        "type": "bubble",
+        "body":{
+          "type": "box",
+          "layout": "horizontal",
+          "contents":[
+            {
+              "type": "text",
+              "text": "Hello,"
+            },
+            {
+              "type": "text",
+              "text": "world!"
+            }
+          ]
+        }
+      }
 
     events.each { |event|
       case event
