@@ -180,8 +180,9 @@ class PostsController < ApplicationController
                 "label": "アルバム"
               }
             }
-          ]
-        }
+          }
+        ]
       }
+    }
     end
 end
