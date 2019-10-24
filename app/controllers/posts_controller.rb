@@ -160,6 +160,26 @@ class PostsController < ApplicationController
             # }
           ]
         }
+      },
+      {
+        "type": "template",
+        "altText": "this is template",
+        "template":{
+          "type": "confirm",
+          "text": "まぜそばは好きですか？",
+          "actions": [
+            {
+              "type": "message",
+              "label": "カメラを起動する",
+              "text": "カメラを起動する"
+            },
+            {
+              "type": "message",
+              "label": "アルバム",
+              "text": "アルバムを開く"
+            }
+          ]
+        }
       }
     end
 
