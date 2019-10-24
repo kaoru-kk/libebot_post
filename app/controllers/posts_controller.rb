@@ -143,18 +143,13 @@ class PostsController < ApplicationController
           "actions": [
             {
               "type": "message",
-              "label": "カメラON",
+              "label": "カメラを起動する",
               "text": "カメラを起動する"
             },
-            # {
-            #   "type": "uri",
-            #   "label": "卒論",
-            #   "uri": "http://54.64.39.151/"
-            # },
             {
-              "type": "message",
-              "label": "アルバム",
-              "text": "アルバムを開く"
+              "type": "uri",
+              "label": "卒論",
+              "uri": "http://54.64.39.151/"
             }
           ]
         }
@@ -171,18 +166,11 @@ class PostsController < ApplicationController
               "type": "action",
               "action": {
                 "type": "camera",
-                "label": "カメラ起動"
-              },
-            {
-              "type": "action",
-              "action": {
-                "type": "cameraRoll",
-                "label": "アルバム"
+                "label": "Camera"
               }
             }
-          }
-        ]
+          ]
+        }
       }
-    }
     end
 end
