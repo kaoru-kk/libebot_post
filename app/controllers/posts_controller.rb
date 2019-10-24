@@ -51,6 +51,8 @@ class PostsController < ApplicationController
         }
           if dm == "カメラを起動する"
             client.reply_message(event['replyToken'], camera)
+          elsif dm == "アルバムを開く"
+            client.reply_message(event['replyToken'], cameraRoll)           
           elsif dm == "好き!"
             client.reply_message(event['replyToken'], like)
           elsif dm == "まぜそば"
@@ -146,10 +148,15 @@ class PostsController < ApplicationController
               "label": "カメラを起動する",
               "text": "カメラを起動する"
             },
+            # {
+            #   "type": "uri",
+            #   "label": "卒論",
+            #   "uri": "http://54.64.39.151/"
+            # }
             {
-              "type": "uri",
-              "label": "卒論",
-              "uri": "http://54.64.39.151/"
+              "type": "message",
+              "label": "アルバム",
+              "text": "アルバムを開く"
             }
           ]
         }
@@ -167,6 +174,24 @@ class PostsController < ApplicationController
               "action": {
                 "type": "camera",
                 "label": "Camera"
+              }
+            }
+          ]
+        }
+      }
+    end
+
+    def cameraRoll
+      cameraRoll =  {
+        "type": "text",
+        "text": "↓のアルバムを押してね",
+        "quickReply": {
+          "items": [
+            {
+              "type": "action",
+              "action": {
+                "type": "cameraRoll",
+                "label": "アルバム"
               }
             }
           ]
