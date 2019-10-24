@@ -57,6 +57,30 @@ class PostsController < ApplicationController
     #       ]
     #     }
     #   }
+    camera =       {
+        "type": "text",
+        "text": "カメラを起動しますか?",
+        "quickReply": {
+          "items": [
+            {
+              "type": "action",
+              "imageUrl": "http://54.64.39.151/",
+              "action": {
+                "type": "message",
+                "label": "卒論",
+                "text": "卒論"
+              }
+            },
+            {
+              "type": "action",
+              "action": {
+                "type": "camera"
+                "label": "Camera"
+              }
+            }
+          ]
+        }
+      }
 
     events.each { |event|
       case event
@@ -190,33 +214,33 @@ class PostsController < ApplicationController
       }
     end
 
-    def camera
-      {
-        "type": "text",
-        "text": "カメラを起動しますか?",
-        "quickReply": {
-          "items": [
-            {
-              "type": "action",
-              "imageUrl": "http://54.64.39.151/",
-              "action": {
-                "type": "message",
-                "label": "卒論",
-                "text": "卒論"
-              }
-            },
-            {
-              "type": "action",
-              "action": {
-                "type": "camera"
-                "label": "Camera"
-              }
-            }
-          ]
-        }
-      }
+    # def camera
+    #   {
+    #     "type": "text",
+    #     "text": "カメラを起動しますか?",
+    #     "quickReply": {
+    #       "items": [
+    #         {
+    #           "type": "action",
+    #           "imageUrl": "http://54.64.39.151/",
+    #           "action": {
+    #             "type": "message",
+    #             "label": "卒論",
+    #             "text": "卒論"
+    #           }
+    #         },
+    #         {
+    #           "type": "action",
+    #           "action": {
+    #             "type": "camera"
+    #             "label": "Camera"
+    #           }
+    #         }
+    #       ]
+    #     }
+    #   }
 
-    end
+    # end
     # def hello
     #   {
     #     "type": "bubble",
