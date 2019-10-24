@@ -17,11 +17,11 @@ class PostsController < ApplicationController
     post.name = dm
     post.user_id = params[:events][0][:source][:userId]
     if dm == nil
-      p ssss
+      p "sss"
     elsif dm == ""
-      p aaaaa
+      p "aaaaa"
     elsif dm == 0
-      p fffffff
+      p "fffffff"
     end
     unless dm == "まぜそば" || dm == "カメラを起動する" || dm == "嫌い" || dm == "好き!"
       post.save
