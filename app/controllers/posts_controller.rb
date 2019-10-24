@@ -162,6 +162,10 @@ class PostsController < ApplicationController
         "template":{
           "type": "confirm",
           "text": "まぜそばは好きですか？",
+          "size": {
+            "width": "2500",
+            "height": "1700"
+          },
           "actions": [
             {
               "type": "message",
@@ -191,7 +195,7 @@ class PostsController < ApplicationController
     def camera
       camera =  {
         "type": "text",
-        "text": "カメラを起動しますか?",
+        "text": "↓のカメラボタンを押してね",
         "quickReply": {
           "items": [
             {
