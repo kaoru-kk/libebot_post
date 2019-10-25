@@ -39,7 +39,6 @@ class PostsController < ApplicationController
 
     events = client.parse_events_from(body)
     like = {type:"text", text: "大好きです"}
-    denji = {type: "uri", text: "https://www.youtube.com/watch?v=sJte2xhZeVY"}
 
     events.each { |event|
       case event
