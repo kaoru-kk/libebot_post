@@ -17,7 +17,7 @@ class PostsController < ApplicationController
     post.name = dm
     post.user_id = params[:events][0][:source][:userId]
 
-    unless dm == nil || dm == "まぜそば" || dm == "カメラを起動する" || dm == "嫌い" || dm == "好き!"
+    unless dm == nil || dm == "まぜそば" || dm == "カメラを起動する" || dm == "好き！"
       post.save
     end
     posts = Post.where(user_id: params[:events][0][:source][:userId])
@@ -53,7 +53,7 @@ class PostsController < ApplicationController
             client.reply_message(event['replyToken'], camera)
           elsif dm == "アルバムを開く"
             client.reply_message(event['replyToken'], cameraRoll)           
-          elsif dm == "好き!"
+          elsif dm == "好き！"
             client.reply_message(event['replyToken'], like)
           elsif dm == "まぜそば"
             client.reply_message(event['replyToken'], template)
